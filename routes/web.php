@@ -11,14 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-	return "ohaoyou";
-    //return view('instruction');
+Route::get('/', function () {	
+    return view('instruction');
 });
 Route::get('notValid',function(){
 	return view('notValid');
 });
+
 Route::resource("products","productsCtrl");
+Route::resource("categories","categoryCtrl");
+
 Route::group(['middleware'=>'cekApi'],function(){
 	
 });
