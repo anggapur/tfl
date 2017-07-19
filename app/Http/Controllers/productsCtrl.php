@@ -46,11 +46,14 @@ class productsCtrl extends Controller
             //         ->leftJoin('rates','products.product_id','=','rates.rate_product_id')
             //         ->groupBy("products.product_id")
             //         ->orderBy($sort,$order);
+            $role = "1";
             $data = products::with('category')            
                     ->with('seller')    
-                    ->withCount('seen')                            
+                    ->withCount('seen')                                              
                     ->orderBy($sort,$order);           
-                                
+                            
+
+            
             $search = $request->input('search');        
             if($search !== "")
             {

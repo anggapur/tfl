@@ -18,6 +18,7 @@ Route::get('notValid',function(){
 	return view('notValid');
 });
 
+Route::resource("sliders","sliderCtrl");
 Route::resource("products","productsCtrl");
 Route::resource("categories","categoryCtrl");
 
