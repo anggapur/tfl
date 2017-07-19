@@ -87,8 +87,15 @@
         </style>
     </head>
     <body>
+    <ul>
+        <li><a href="#products"> Products </a></li>
+        <li><a href="#products-detail"> Products Detail</a></li>
+        <li><a href="#categories"> Categories</a></li>
+        <li><a href="#productbycategories"> Product list by Categories</a></li>
+        <li><a href="#sliders"> Sliders</a></li>
+    </ul>
     <!-- products -->
-       <div>
+       <div id="products">
             <h3>https://tfl.000webhostapp.com/products</h3>
             <p>Desc :  Get Products List</p>
             <table border="1">
@@ -143,7 +150,7 @@
        <!-- end products -->
        <!-- products detail-->
        <hr>
-       <div>
+       <div id="products-detail">
             <h3>https://tfl.000webhostapp.com/products/[product.id]</h3>
             <p>Desc :  Get Products Detail</p>
             <p>example : https://tfl.000webhostapp.com/products/1</p>
@@ -176,7 +183,7 @@
        <!-- end products detail-->
        <hr>
        <!-- categories -->
-       <div>
+       <div id="categories">
             <h3>https://tfl.000webhostapp.com/categories</h3>
             <p>Desc :  Get categories and his child/sub category</p>
             <table border="1">
@@ -214,7 +221,7 @@
        <!-- categpries -->
        <hr>
        <!-- categories detail -->
-       <div>
+       <div id="productbycategories">
             <h3>https://tfl.000webhostapp.com/products/[category_id]</h3>
             <p>Desc :  Get List  Products by Their Category</p>
             <table border="1">
@@ -258,6 +265,41 @@
                         <td>-</td>
                     </tr>
                                 
+                </tbody>  
+            </table>
+       </div> 
+       <!-- end products -->
+       <hr>
+       <!-- Slider -->
+       <div id="sliders">
+            <h3>https://tfl.000webhostapp.com/sliders</h3>
+            <p>Desc :  Get List Slider</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                        <th>Parameter Type</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <td>user-key</td>
+                        <td>User Key Value</td>
+                        <td>header</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>state</td>
+                        <td>Show data by state indicator<br>
+                                https://tfl.000webhostapp.com/sliders = all Data<br>
+                                https://tfl.000webhostapp.com/sliders?state=1 = data with state 1 (active)<br>
+                                https://tfl.000webhostapp.com/sliders?state=0 = data with state 0 (inactive)<br>
+                        </td>
+                        <td>GET</td>
+                        <td>-</td>
+                    </tr>
                 </tbody>  
             </table>
        </div> 
