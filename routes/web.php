@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('instruction');
+	return "ohaoyou";
+    //return view('instruction');
 });
 Route::get('notValid',function(){
 	return view('notValid');
