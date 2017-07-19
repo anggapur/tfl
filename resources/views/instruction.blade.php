@@ -79,6 +79,11 @@
             {
                   font-family: sans-serif;
             }
+            hr
+            {
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
         </style>
     </head>
     <body>
@@ -165,6 +170,94 @@
                         <td>-</td>
                     </tr>
                    
+                </tbody>  
+            </table>
+       </div> 
+       <!-- end products detail-->
+       <hr>
+       <!-- categories -->
+       <div>
+            <h3>https://tfl.000webhostapp.com/categories</h3>
+            <p>Desc :  Get categories and his child/sub category</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                        <th>Parameter Type</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <td>user-key</td>
+                        <td>User Key Value</td>
+                        <td>header</td>
+                        <td>required</td>
+                    </tr>                    
+                    <tr>
+                        <td>order</td>
+                        <td>Order method can asc or desc, default : asc</td>
+                        <td>GET</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>sort</td>
+                        <td>Sort by the column name, default : category_id</td>
+                        <td>GET</td>
+                        <td>-</td>
+                    </tr>
+                                    
+                </tbody>  
+            </table>
+       </div> 
+       <!-- categpries -->
+       <hr>
+       <!-- categories detail -->
+       <div>
+            <h3>https://tfl.000webhostapp.com/products/[category_id]</h3>
+            <p>Desc :  Get List  Products by Their Category</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                        <th>Parameter Type</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <td>user-key</td>
+                        <td>User Key Value</td>
+                        <td>header</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>data_per_page</td>
+                        <td>Data Shown per page, default : 10</td>
+                        <td>GET</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>page</td>
+                        <td>Data Shown per page, default : 1</td>
+                        <td>GET</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>order</td>
+                        <td>Order method can asc or desc, default : asc</td>
+                        <td>GET</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>sort</td>
+                        <td>Sort by the column name, default : product.id</td>
+                        <td>GET</td>
+                        <td>-</td>
+                    </tr>
+                                
                 </tbody>  
             </table>
        </div> 

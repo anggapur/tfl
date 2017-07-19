@@ -38,15 +38,18 @@ class productsCtrl extends Controller
             if($sort == "")
                 $sort = "products.product_id";
 
-            $data = DB::table('products') 
-                    ->select(DB::raw("products.*,count(seens.product_id) as seen,categories.*,sellers.*,avg(rates.star)-1 as avg_star"))
-                    ->leftJoin('categories','products.product_category_id','=','categories.category_id')
-                    ->leftJoin('sellers','products.product_seller_id','=','sellers.seller_id')
-                    ->leftJoin('seens','products.product_id','=','seens.product_id') 
-                    ->leftJoin('rates','products.product_id','=','rates.rate_product_id')
-                    ->groupBy("products.product_id")
-                    ->orderBy($sort,$order);
-                    
+            // $data = DB::table('products') 
+            //         ->select(DB::raw("products.*,count(seens.product_id) as seen,categories.*,sellers.*,avg(rates.star)-1 as avg_star"))
+            //         ->leftJoin('categories','products.product_category_id','=','categories.category_id')
+            //         ->leftJoin('sellers','products.product_seller_id','=','sellers.seller_id')
+            //         ->leftJoin('seens','products.product_id','=','seens.product_id') 
+            //         ->leftJoin('rates','products.product_id','=','rates.rate_product_id')
+            //         ->groupBy("products.product_id")
+            //         ->orderBy($sort,$order);
+            $data = products::with('category')            
+                    ->with('seller')    
+                    ->withCount('seen')                            
+                    ->orderBy($sort,$order);           
                                 
             $search = $request->input('search');        
             if($search !== "")
@@ -55,8 +58,7 @@ class productsCtrl extends Controller
                     $data = $data->where('products.product_name','like','%'.$search.'%');
                                // ->orWhere('categories.category_name','like','%'.$search.'%');
             }
-
-        
+            
             return response()->json($data->paginate($data_per_page),200,[],JSON_PRETTY_PRINT);  
         
         
@@ -105,20 +107,24 @@ class productsCtrl extends Controller
         $datas['product_id'] = $id;
         $datas['seen_by'] = \Request::ip();
         seen::create($datas);
-        $data = DB::table('products')  
-                ->select(DB::raw("products.*,count(seens.product_id) as seen,categories.*,sellers.*,avg(rates.star)-1 as avg_star"))
-                ->leftJoin('seens','products.product_id','=','seens.product_id')  
-                ->leftJoin('rates','products.product_id','=','rates.rate_product_id')                    
-                ->leftJoin('categories','products.product_category_id','=','categories.category_id')
-                ->leftJoin('sellers','products.product_seller_id','=','sellers.seller_id')
-                ->where('products.product_id',$id)                    
-                ->groupBy("seens.product_id")
-                ->first() ;  
-        if($data)
-        {
-            $data->comment = rate::where('rate_product_id',$id)->get();
-            $data->images = image::where('product_id',$id)->get();
-        }
+        // $data = DB::table('products')  
+        //         ->select(DB::raw("products.*,count(seens.product_id) as seen,categories.*,sellers.*,avg(rates.star)-1 as avg_star"))
+        //         ->leftJoin('seens','products.product_id','=','seens.product_id')  
+        //         ->leftJoin('rates','products.product_id','=','rates.rate_product_id')                    
+        //         ->leftJoin('categories','products.product_category_id','=','categories.category_id')
+        //         ->leftJoin('sellers','products.product_seller_id','=','sellers.seller_id')
+        //         ->where('products.product_id',$id)                    
+        //         ->groupBy("seens.product_id")
+        //         ->first() ;  
+        $data = products::with('category')         
+        ->with('images')
+        ->with('seller')   
+        ->with('rate')  
+        ->withCount('seen')
+        ->where('products.product_id',$id) 
+        ->first();                
+        $data->avg_star = $data->rate()->avg('star')-1;
+        
        
 
         if(!$data)
@@ -126,7 +132,11 @@ class productsCtrl extends Controller
             $data['message'] = "no data";        
             $data['status'] = "not found";        
         }
-
+        // if($data)
+        // {
+        //     $data->comment = rate::where('rate_product_id',$id)->get();
+        //     $data->images = image::where('product_id',$id)->get();
+        // }
         return response()->json($data,200,[],JSON_PRETTY_PRINT);  
 
     }
