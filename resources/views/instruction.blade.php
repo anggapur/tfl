@@ -97,7 +97,7 @@
     <!-- products -->
        <div id="products">
             <h3>https://tfl.000webhostapp.com/products</h3>
-            <p>Desc :  Get Products List</p>
+            <p>Desc :  Get Products List , you can search products in here</p>
             <table border="1">
                 <thead>
                     <tr>
@@ -268,7 +268,7 @@
                 </tbody>  
             </table>
        </div> 
-       <!-- end products -->
+       <!-- end slider -->
        <hr>
        <!-- Slider -->
        <div id="sliders">
@@ -303,6 +303,6 @@
                 </tbody>  
             </table>
        </div> 
-       <!-- end products -->
+       <!-- end slider -->
     </body>
 </html>

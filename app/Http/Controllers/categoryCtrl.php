@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\products;
 use App\category;
 use DB;
+use jsonPrint;
 class categoryCtrl extends Controller
 {
     /**
@@ -32,7 +33,7 @@ class categoryCtrl extends Controller
         $datas['total'] = count($data);
         $datas['data'] = $data;
 
-        return response()->json($datas,200,[],JSON_PRETTY_PRINT); 
+        return jsonPrint::prints($datas);
     }
 
     /**
@@ -92,7 +93,7 @@ class categoryCtrl extends Controller
                     ->where('categories.category_id',$id)
                     ->orderBy($sort,$order);
 
-        return response()->json($data->paginate($data_per_page),200,[],JSON_PRETTY_PRINT);                      
+       return jsonPrint::prints($data->paginate($data_per_page));                      
     }
 
     /**

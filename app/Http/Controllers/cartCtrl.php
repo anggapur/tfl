@@ -3,28 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\slider;
+use App\cart;
 use jsonPrint;
-class sliderCtrl extends Controller
+use DB;
+class cartCtrl extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $state =  $request->input('state');
-       
-        if($state == "")
-            $slider = slider::all();   
-        else
-            $slider = slider::where('slider_state',$state)->get();               
-                        
-        $data['total'] = count($slider);
-        $data['data'] = $slider;
-        return jsonPrint::prints($data);
     }
 
     /**
@@ -57,6 +48,17 @@ class sliderCtrl extends Controller
     public function show($id)
     {
         //
+
+        $data['data'] = cart::select(DB::raw('carts.*,products.*,(carts.cart_qty*products.product_sell_price) as subtotal'))
+                        ->leftJoin('products','carts.cart_product_id','=','products.product_id')
+                        ->with('seller')
+                        ->where('cart_buyer_id',$id)
+                        ->get();
+
+        $data['total'] = count($data['data']);
+        $data['message'] ='success';        
+        return jsonPrint::prints($data);
+
     }
 
     /**

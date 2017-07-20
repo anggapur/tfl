@@ -10,6 +10,7 @@ use GuzzleHttp\Client;
 use App\seen;
 use App\rate;
 use App\image;
+use jsonPrint;
 class productsCtrl extends Controller
 {
     /**
@@ -62,8 +63,9 @@ class productsCtrl extends Controller
                                // ->orWhere('categories.category_name','like','%'.$search.'%');
             }
             
-            return response()->json($data->paginate($data_per_page),200,[],JSON_PRETTY_PRINT);  
-        
+            return jsonPrint::prints($data->paginate($data_per_page));
+
+           
         
     }
 
@@ -140,7 +142,7 @@ class productsCtrl extends Controller
         //     $data->comment = rate::where('rate_product_id',$id)->get();
         //     $data->images = image::where('product_id',$id)->get();
         // }
-        return response()->json($data,200,[],JSON_PRETTY_PRINT);  
+        return jsonPrint::prints($data);
 
     }
 
