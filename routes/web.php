@@ -21,11 +21,13 @@ Route::get('token',function(){
 	return csrf_token();
 });
 
-Route::resource("carts","cartCtrl");
-Route::resource("sliders","sliderCtrl");
-Route::resource("products","productsCtrl");
-Route::resource("categories","categoryCtrl");
 
+	Route::resource("carts","cartCtrl");
+	Route::resource("sliders","sliderCtrl");
+	Route::resource("products","productsCtrl");
+	Route::resource("categories","categoryCtrl");
+	Route::resource("login","loginCtrl");
+	Route::post("login/check","loginCtrl@check");
 Route::group(['middleware'=>'cekApi'],function(){
 	
 });

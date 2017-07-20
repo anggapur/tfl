@@ -39,19 +39,21 @@ class productsCtrl extends Controller
             if($sort == "")
                 $sort = "products.product_id";
 
-            // $data = DB::table('products') 
-            //         ->select(DB::raw("products.*,count(seens.product_id) as seen,categories.*,sellers.*,avg(rates.star)-1 as avg_star"))
-            //         ->leftJoin('categories','products.product_category_id','=','categories.category_id')
-            //         ->leftJoin('sellers','products.product_seller_id','=','sellers.seller_id')
-            //         ->leftJoin('seens','products.product_id','=','seens.product_id') 
-            //         ->leftJoin('rates','products.product_id','=','rates.rate_product_id')
-            //         ->groupBy("products.product_id")
-            //         ->orderBy($sort,$order);
-            $role = "1";
-            $data = products::with('category')            
-                    ->with('seller')    
-                    ->withCount('seen')                                              
-                    ->orderBy($sort,$order);           
+            $data = DB::table('products') 
+                    ->select(DB::raw("products.*,count(seens.product_id) as seen_count,
+                        categories.*,
+                        sellers.seller_name,sellers.seller_image,
+                        avg(rates.star)-1 as avg_star"))
+                    ->leftJoin('categories','products.product_category_id','=','categories.category_id')
+                    ->leftJoin('sellers','products.product_seller_id','=','sellers.seller_id')
+                    ->leftJoin('seens','products.product_id','=','seens.product_id') 
+                    ->leftJoin('rates','products.product_id','=','rates.rate_product_id')
+                    ->groupBy("products.product_id")
+                    ->orderBy($sort,$order);            
+            // $data = products::with('category')            
+            //         ->with('seller')    
+            //         ->withCount('seen')                                              
+            //         ->orderBy($sort,$order);           
                             
 
             

@@ -97,6 +97,7 @@
         <li><a href="#carts-create"> Carts-create</a></li>
         <li><a href="#carts-delete"> Carts-delete</a></li>
         <li><a href="#carts-update"> Carts-update</a></li>
+        <li><a href="#login"> login</a></li>
     </ul>
     <!-- products -->
        <div id="products">
@@ -388,7 +389,7 @@
        <!-- end carts create-->
        <hr>
        <!-- carts delete -->
-       <div id="carts-create">
+       <div id="carts-delete">
             <h3>https://tfl.000webhostapp.com/carts/[cart_id]</h3>
             <p>Desc :  To delete product from customer cart  </p>
             <p>Example : Try to use postman</p>
@@ -471,6 +472,47 @@
             </table>
        </div> 
        <!-- end carts update -->
+       <hr>
+        <!-- login -->
+       <div id="login">
+            <h3>https://tfl.000webhostapp.com/tfl/login/check</h3>
+            <p>Desc :  send username/email and password and get data if user exists  </p>
+            <p>Example : Try to use postman</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                        <th>Parameter Type</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <td>user-key</td>
+                        <td>User Key Value</td>
+                        <td>header</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td>this value can contain email or username but the index must named email</td>
+                        <td>POST</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>password</td>
+                        <td>value of password</td>
+                        <td>POST</td>
+                        <td>required</td>
+                    </tr>  
+                                     
+                                               
+                                
+                </tbody>  
+            </table>
+       </div> 
+       <!-- login -->
        <hr>
     </body>
 </html>
