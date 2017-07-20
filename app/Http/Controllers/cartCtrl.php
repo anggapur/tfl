@@ -26,6 +26,7 @@ class cartCtrl extends Controller
     public function create()
     {
         //
+        return view('form');
     }
 
     /**
@@ -51,7 +52,9 @@ class cartCtrl extends Controller
 
         $data['data'] = cart::select(DB::raw('carts.*,products.*,(carts.cart_qty*products.product_sell_price) as subtotal'))
                         ->leftJoin('products','carts.cart_product_id','=','products.product_id')
-                        ->with('seller')
+                        ->with(['seller'=>function($query){
+                            $query->select('seller_id','seller_name');
+                        }])
                         ->where('cart_buyer_id',$id)
                         ->get();
 
@@ -93,5 +96,6 @@ class cartCtrl extends Controller
     public function destroy($id)
     {
         //
+        return $id;
     }
 }

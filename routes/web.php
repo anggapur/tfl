@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::get('notValid',function(){
 	return view('notValid');
 });
+Route::get('token',function(){
+	return csrf_token();
+});
 
 Route::resource("cart","cartCtrl");
 Route::resource("sliders","sliderCtrl");
