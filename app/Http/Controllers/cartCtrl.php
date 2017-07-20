@@ -44,7 +44,7 @@ class cartCtrl extends Controller
         $data['cart_qty'] = $request->input('qty');
         if($data['cart_qty'] == "")
             $data['cart_qty'] = "1";
-
+        
         $query = cart::where([
                 'cart_buyer_id' => $request->input('user_id'),
                 'cart_product_id' => $request->input('product_id'),

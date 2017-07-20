@@ -93,6 +93,10 @@
         <li><a href="#categories"> Categories</a></li>
         <li><a href="#productbycategories"> Product list by Categories</a></li>
         <li><a href="#sliders"> Sliders</a></li>
+        <li><a href="#carts"> Carts</a></li>
+        <li><a href="#carts-create"> Carts-create</a></li>
+        <li><a href="#carts-delete"> Carts-delete</a></li>
+        <li><a href="#carts-update"> Carts-update</a></li>
     </ul>
     <!-- products -->
        <div id="products">
@@ -304,5 +308,169 @@
             </table>
        </div> 
        <!-- end slider -->
+       <hr>
+       <!-- carts -->
+       <div id="carts">
+            <h3>https://tfl.000webhostapp.com/carts/[user_id]</h3>
+            <p>Desc :  Get list product that in customer cart, find by customer (user) id</p>
+            <p>Example : https://tfl.000webhostapp.com/carts/1  , you will get list products of customer with user_id value is 1</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                        <th>Parameter Type</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <td>user-key</td>
+                        <td>User Key Value</td>
+                        <td>header</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>user_id</td>
+                        <td>user/customer id</td>
+                        <td>GET</td>
+                        <td>required</td>
+                    </tr>
+                                    
+                </tbody>  
+            </table>
+       </div> 
+       <!-- end carts -->
+        <hr>
+       <!-- carts create -->
+       <div id="carts-create">
+            <h3>https://tfl.000webhostapp.com/carts</h3>
+            <p>Desc :  To Store or add product to customer cart by send user_id, product_id and qty</p>
+            <p>Example : Try to use postman</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                        <th>Parameter Type</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <td>user-key</td>
+                        <td>User Key Value</td>
+                        <td>header</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>user_id</td>
+                        <td>user/customer id</td>
+                        <td>POST</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>product_id</td>
+                        <td>product id value</td>
+                        <td>POST</td>
+                        <td>required</td>
+                    </tr>
+                     <tr>
+                        <td>qty</td>
+                        <td>quantity value</td>
+                        <td>POST</td>
+                        <td>required</td>
+                    </tr>
+                                    
+                </tbody>  
+            </table>
+       </div> 
+       <!-- end carts create-->
+       <hr>
+       <!-- carts delete -->
+       <div id="carts-create">
+            <h3>https://tfl.000webhostapp.com/carts/[cart_id]</h3>
+            <p>Desc :  To delete product from customer cart  </p>
+            <p>Example : Try to use postman</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                        <th>Parameter Type</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <td>user-key</td>
+                        <td>User Key Value</td>
+                        <td>header</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>cart_id</td>
+                        <td>every product on customer cart have unique cart_id </td>
+                        <td>GET</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>_method</td>
+                        <td>value must <b> DELETE</b></td>
+                        <td>POST</td>
+                        <td>required</td>
+                    </tr>                    
+                                
+                </tbody>  
+            </table>
+       </div> 
+       <!-- end carts delete -->
+       <hr>
+       <!-- carts update -->
+       <div id="carts-update">
+            <h3>https://tfl.000webhostapp.com/carts/[cart_id]</h3>
+            <p>Desc :  To update quantity product from customer cart  </p>
+            <p>Example : Try to use postman</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                        <th>Parameter Type</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <td>user-key</td>
+                        <td>User Key Value</td>
+                        <td>header</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>cart_id</td>
+                        <td>every product on customer cart have unique cart_id </td>
+                        <td>GET</td>
+                        <td>required</td>
+                    </tr>
+                    <tr>
+                        <td>_method</td>
+                        <td>value must <b> PATCH</b></td>
+                        <td>POST</td>
+                        <td>required</td>
+                    </tr>  
+                     <tr>
+                        <td>qty</td>
+                        <td>quantity value</td>
+                        <td>POST</td>
+                        <td>required</td>
+                    </tr>                    
+                                               
+                                
+                </tbody>  
+            </table>
+       </div> 
+       <!-- end carts update -->
+       <hr>
     </body>
 </html>

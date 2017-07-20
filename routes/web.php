@@ -21,7 +21,7 @@ Route::get('token',function(){
 	return csrf_token();
 });
 
-Route::resource("cart","cartCtrl");
+Route::resource("carts","cartCtrl");
 Route::resource("sliders","sliderCtrl");
 Route::resource("products","productsCtrl");
 Route::resource("categories","categoryCtrl");
